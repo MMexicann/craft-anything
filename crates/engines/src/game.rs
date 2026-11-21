@@ -1140,7 +1140,7 @@ mod tests {
         assert_eq!(inv.best(Builder::Unity).unwrap().version, "6000.0.23f1", "newest first");
         assert_eq!(inv.engines.iter().filter(|i| i.builder == Builder::Unity).count(), 2);
         assert_eq!(inv.best(Builder::Godot).unwrap().version, "4.4.1");
-        assert_eq!(inv.engines.iter().filter(|i| i.builder == Builder::Godot).count(), 1, "ignore console builds, incomplete bundles, and executable-shaped directories");
+        assert_eq!(inv.engines.iter().filter(|i| i.builder == Builder::Godot).count(), 1, "only valid editor files count");
         assert_eq!(inv.best(Builder::Unreal).unwrap().version, "5.4");
         assert!(inv.unity_hub.is_some() && inv.epic_launcher.is_none());
         assert!(!inv.ready(Builder::Unreal), "Unreal also needs C++ tools");
